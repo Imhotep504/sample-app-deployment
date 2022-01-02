@@ -1,0 +1,19 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: before
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+spec:
+  template:
+    metadata:
+    spec:
+      containers:
+      - command:
+        - echo
+        - pre-sync
+        image: alpine
+        name: before
+        resources: {}
+      restartPolicy: Never
+status: {}
